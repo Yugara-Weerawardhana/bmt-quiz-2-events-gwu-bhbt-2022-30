@@ -1,12 +1,12 @@
-/* Google Font */
+/* Custom font import and application */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
-
-/* Base Light Mode */
+    
+/* Base styles for Light Mode */
 :root {
-    --bg-primary: #f9fafb;
-    --bg-secondary: #ffffff;
-    --text-primary: #1f2937;
-    --text-secondary: #4b5563;
+    --bg-primary: #f9fafb; /* gray-50 */
+    --bg-secondary: #ffffff; /* white */
+    --text-primary: #1f2937; /* gray-800 */
+    --text-secondary: #4b5563; /* gray-600 */
 }
 
 body {
@@ -16,27 +16,17 @@ body {
     transition: background-color 0.5s, color 0.5s;
 }
 
-/* Dark Mode */
+/* Dark Mode Styles */
 .dark {
-    --bg-primary: #111827;
-    --bg-secondary: #1f2937;
-    --text-primary: #f3f4f6;
-    --text-secondary: #9ca3af;
+    --bg-primary: #111827; /* gray-900 */
+    --bg-secondary: #1f2937; /* gray-800 */
+    --text-primary: #f3f4f6; /* gray-100 */
+    --text-secondary: #9ca3af; /* gray-400 */
 }
 
-.dark .shadow-lg {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 
-                0 4px 6px -2px rgba(0, 0, 0, 0.2);
-}
+.dark .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.2); }
 
-/* Event Cards */
 .event-card {
     background-color: var(--bg-secondary);
     color: var(--text-primary);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.event-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
