@@ -1,51 +1,68 @@
-<!-- ======================= index.html ======================= -->
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>TechCon 2025 Event Schedule</title>
-<meta name="description" content="TechCon 2025 - Event Showcase: schedule, filters, search, dark mode, calendar export, countdowns.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechCon 2025 Event Showcase</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        // Check localStorage for user preference, fall back to system preference
+        const storedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (storedTheme === 'dark' |
+
+| (!storedTheme && systemPrefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+    </script>
 </head>
 <body>
-<header class="site-header">
-<div class="wrap">
-<h1>TechCon 2025 — Event Schedule</h1>
-<div class="controls">
-<div class="search-wrap">
-<label for="search" class="visually-hidden">Search events</label>
-<input id="search" type="search" placeholder="Search events..." aria-label="Search events">
-</div>
-<div class="filter-group" role="tablist" aria-label="Event type filters">
-<button class="filter-btn active" data-type="All" aria-pressed="true">All</button>
-<button class="filter-btn" data-type="Talk">Talks</button>
-<button class="filter-btn" data-type="Workshop">Workshops</button>
-<button class="filter-btn" data-type="Panel">Panels</button>
-<button class="filter-btn" data-type="Social">Social</button>
-</div>
-<button id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Toggle dark mode">🌓</button>
-</div>
-</div>
-</header>
+    <header>
+        <div class="header-content">
+            <h1>TechCon 2025: The Innovation Frontier</h1>
+            <button id="theme-toggle" aria-label="Toggle dark and light mode">
+                <span class="sun-icon">☀️</span>
+                <span class="moon-icon">🌙</span>
+            </button>
+        </div>
+    </header>
 
+    <main>
+        <section id="controls-section">
+            <div class="search-and-filter-bar">
+                <input type="text" id="event-search" placeholder="Search events by title or description..." aria-label="Search events">
 
-<main class="wrap">
-<section id="event-container" aria-live="polite" aria-label="Event list" class="grid"></section>
-<div id="results-announcer" class="sr-only" aria-live="polite"></div>
-</main>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all" tabindex="0" role="button">All Events</button>
+                    <button class="filter-btn" data-filter="Keynote" tabindex="0" role="button">Keynotes</button>
+                    <button class="filter-btn" data-filter="Talk" tabindex="0" role="button">Talks</button>
+                    <button class="filter-btn" data-filter="Workshop" tabindex="0" role="button">Workshops</button>
+                    <button class="filter-btn" data-filter="Panel" tabindex="0" role="button">Panels</button>
+                    <button class="filter-btn" data-filter="Social" tabindex="0" role="button">Social</button>
+                </div>
+            </div>
+        </section>
 
+        <section id="event-container">
+            </section>
+        
+        <p id="no-results" class="hidden" aria-live="polite" role="status">
+            No events match your current search or filter criteria.
+        </p>
 
-<footer class="site-footer">
-<div class="wrap">
-<p>© <span id="year"></span> TechCon 2025. All rights reserved. Built by your student developer.</p>
-</div>
-</footer>
+    </main>
 
+    <footer>
+        <p>&copy; 2025 TechCon. All rights reserved. Developed by.</p>
+    </footer>
 
-<script src="scripts/main.js"></script>
+    <script src="scripts.js"></script>
 </body>
 </html>
